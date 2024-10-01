@@ -1,14 +1,19 @@
-const slides = document.querySelectorAll('.slide');
+function sliderPlugin (activeSlide = 1) {
+  const slides = document.querySelectorAll('.slide');
 
-slides.forEach((slide) => {
-  slide.addEventListener('click', ()=> {
-    clearActiveClasses();
-    slide.classList.add("active");
-  });
-});
-
-function clearActiveClasses() {
+  slides[activeSlide].classList.add("active");
   slides.forEach((slide) => {
-    slide.classList.remove('active');
+    slide.addEventListener('click', ()=> {
+      clearActiveClasses();
+      slide.classList.add("active");
+    });
   });
+
+  function clearActiveClasses() {
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+  }
 }
+
+sliderPlugin(3);
